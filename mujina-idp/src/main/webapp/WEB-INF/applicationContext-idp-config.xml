@@ -37,6 +37,12 @@
     <constructor-arg ref="samlValidaotrSuite"/>
   </bean>
 
+  <bean id="singleSignOnHttpGetRedirectService" class="nl.surfnet.mujina.saml.SingleSignOnService">
+    <constructor-arg value="${AUTHN_RESPONDER_URI}"/>
+    <constructor-arg ref="httpRedirectBindingAdpater"/>
+    <constructor-arg ref="samlValidaotrSuite"/>
+  </bean>
+
   <bean id="authnResponder" class="nl.surfnet.mujina.saml.SSOSuccessAuthnResponder">
     <constructor-arg ref="timeService"/>
     <constructor-arg ref="bindingAdpater"/>
@@ -66,8 +72,19 @@
     <constructor-arg ref="samlParserPool"/>
   </bean>
 
+  <bean id="httpRedirectDecoder" class="org.opensaml.saml2.binding.decoding.HTTPRedirectDeflateDecoder">
+    <constructor-arg ref="samlParserPool"/>
+  </bean>
+
   <bean id="bindingAdpater" class="nl.surfnet.mujina.saml.ConfigurableSAMLMessageHandler">
     <constructor-arg ref="decoder"/>
+    <constructor-arg ref="securityPolicyResolver"/>
+    <property name="velocityEngine" ref="velocityEngine"/>
+    <property name="configuration" ref="idpConfiguration" />
+  </bean>
+
+  <bean id="httpRedirectBindingAdpater" class="nl.surfnet.mujina.saml.ConfigurableSAMLMessageHandler">
+    <constructor-arg ref="httpRedirectDecoder"/>
     <constructor-arg ref="securityPolicyResolver"/>
     <property name="velocityEngine" ref="velocityEngine"/>
     <property name="configuration" ref="idpConfiguration" />

@@ -31,6 +31,8 @@
     <logout/>
 
     <intercept-url pattern="${SSO_SERVICE_URI}" access="ROLE_USER,ROLE_ADMIN,ROLE_ANONYMOUS"/>
+    <intercept-url pattern="${SSO_SERVICE_REDIRECT_URI}" access="ROLE_USER,ROLE_ADMIN,ROLE_ANONYMOUS"/>
+    
     <intercept-url pattern="/login.jsp" access="ROLE_USER,ROLE_ADMIN,ROLE_ANONYMOUS"/>
 
     <intercept-url pattern="/index.jsp" access="ROLE_USER,ROLE_ADMIN,ROLE_ANONYMOUS"/>
