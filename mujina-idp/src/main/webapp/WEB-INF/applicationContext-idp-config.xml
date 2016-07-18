@@ -86,6 +86,7 @@
   <bean id="httpRedirectBindingAdpater" class="nl.surfnet.mujina.saml.ConfigurableSAMLMessageHandler">
     <constructor-arg ref="httpRedirectDecoder"/>
     <constructor-arg ref="securityPolicyResolver"/>
+    <constructor-arg value="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"></constructor-arg>
     <property name="velocityEngine" ref="velocityEngine"/>
     <property name="configuration" ref="idpConfiguration" />
   </bean>

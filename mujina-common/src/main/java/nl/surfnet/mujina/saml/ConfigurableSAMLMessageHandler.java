@@ -17,10 +17,10 @@
 package nl.surfnet.mujina.saml;
 
 import org.opensaml.common.binding.decoding.SAMLMessageDecoder;
+import org.opensaml.common.xml.SAMLConstants;
 import org.opensaml.ws.security.SecurityPolicyResolver;
 
 import nl.surfnet.mujina.model.CommonConfiguration;
-import nl.surfnet.spring.security.opensaml.SAMLMessageHandlerImpl;
 
 /**
  * Variant of SAMLMessageHandlerImpl that uses Mujina configuration for entity id and whether to sign.
@@ -33,7 +33,11 @@ public class ConfigurableSAMLMessageHandler extends SAMLMessageHandlerImpl {
   }
 
   public ConfigurableSAMLMessageHandler(SAMLMessageDecoder decoder, SecurityPolicyResolver resolver) {
-    super(decoder, resolver);
+    super(decoder, resolver, SAMLConstants.SAML2_POST_SIMPLE_SIGN_BINDING_URI);
+  }
+
+  public ConfigurableSAMLMessageHandler(SAMLMessageDecoder decoder, SecurityPolicyResolver resolver, String acsBindingUri) {
+    super(decoder, resolver, acsBindingUri);
   }
 
   @Override
