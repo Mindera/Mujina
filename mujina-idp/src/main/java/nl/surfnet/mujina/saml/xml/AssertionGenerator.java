@@ -100,6 +100,8 @@ public class AssertionGenerator {
 
     final Conditions conditions = new ConditionsBuilder().buildObject();
     conditions.getAudienceRestrictions().add(audienceRestriction);
+    conditions.setNotBefore(DateTime.now().minusDays(1).minusDays(validForInSeconds));
+    conditions.setNotOnOrAfter(DateTime.now().plusDays(1).plusDays(validForInSeconds));
     assertion.setConditions(conditions);
 
 
