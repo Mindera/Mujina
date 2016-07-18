@@ -20,6 +20,7 @@ import nl.surfnet.mujina.controllers.CommonAPI;
 import nl.surfnet.mujina.controllers.IdentityProviderAPI;
 import nl.surfnet.mujina.model.*;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.opensaml.saml2.core.Response;
@@ -37,6 +38,7 @@ import java.util.*;
 import static junit.framework.Assert.*;
 import static nl.surfnet.mujina.model.AuthenticationMethod.Method.USER;
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext-idp-config.xml", "classpath:applicationContext-property-mappings.xml",
   "classpath:applicationContext-spring-security.xml", "classpath:api-servlet.xml", "classpath:test-beans.xml"})
